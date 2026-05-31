@@ -285,7 +285,7 @@ async function doLogin(){
     const sess={id:user.name,name:user.name,email:user.email,role:user.role,color:user.color,
       is_admin:['admin','Admin','Conultadd Admin','Consultadd Admin'].includes(user.role)};
     localStorage.setItem('rl_session',JSON.stringify(sess));
-    window.location.href='https://emailreplydashboard-production.up.railway.app';
+    const token=btoa(JSON.stringify(sess)); window.location.href='https://emailreplydashboard-production.up.railway.app?session='+encodeURIComponent(token);
   }catch(e){
     errTxt.textContent='Connection error. Try again.';
     err.style.display='flex';resetBtn();
