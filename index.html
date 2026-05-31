@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ConsultADD — Tech Talent & Government Digital Services</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000}
+body{font-family:'Inter',sans-serif;color:#fff;overflow:hidden}
+
+.root{min-height:100vh;background:#000;overflow:hidden;display:flex;flex-direction:column;position:relative}
+
+/* VIDEO */
+.video-wrap{position:absolute;inset:0;z-index:0;overflow:hidden}
+video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transform:translateY(17%);opacity:0;
+}
+.overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.15) 35%,rgba(0,0,0,0.35) 70%,rgba(0,0,0,0.72) 100%);
+}
+
+/* LIQUID GLASS */
+.glass{
+  background:rgba(255,255,255,0.01);
+  background-blend-mode:luminosity;
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  border:none;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.1);
+  position:relative;overflow:hidden;
+}
+.glass::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%,rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%,rgba(255,255,255,0.45) 100%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+}
+
+/* NAV */
+nav{position:relative;z-index:20;padding:24px 24px}
+.nav-inner{
+  max-width:1000px;margin:0 auto;
+  border-radius:999px;padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Instrument Serif',serif;font-size:19px;
+  color:#fff;font-weight:400;letter-spacing:-0.01em;
+  flex-shrink:0;
+}
+.logo-mark{
+  width:30px;height:30px;border-radius:8px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  display:grid;place-items:center;
+  font-family:'Instrument Serif',serif;font-size:15px;color:#fff;
+}
+.nav-links{
+  display:flex;align-items:center;gap:28px;list-style:none;
+}
+.nav-links a{
+  color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:500;
+  text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:14px}
+.btn-text{
+  background:none;border:none;color:rgba(255,255,255,0.75);
+  font-size:13.5px;font-weight:500;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:color 0.2s;
+}
+.btn-text:hover{color:#fff}
+.btn-pill{
+  border-radius:999px;padding:9px 22px;
+  font-size:13px;font-weight:500;cursor:pointer;
+  font-family:'Inter',sans-serif;color:#fff;
+  transition:background 0.2s;border:none;
+}
+.btn-pill:hover{background:rgba(255,255,255,0.06)}
+
+/* HERO */
+.hero{
+  position:relative;z-index:10;
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:12px 24px 96px;
+  text-align:center;
+  transform:translateY(-10%);
+}
+h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(46px,7vw,80px);
+  font-weight:400;line-height:1.06;
+  letter-spacing:-0.025em;color:#fff;
+  margin-bottom:28px;
+  white-space:nowrap;
+}
+h1 em{font-style:italic;color:rgba(255,255,255,0.68)}
+
+.sub{
+  font-size:15px;color:rgba(255,255,255,0.45);
+  line-height:1.7;max-width:440px;
+  margin-bottom:40px;font-weight:400;
+}
+
+/* EMAIL BAR */
+.email-bar{
+  border-radius:999px;padding:6px 6px 6px 22px;
+  display:flex;align-items:center;gap:10px;
+  max-width:460px;width:100%;margin-bottom:20px;
+}
+.email-input{
+  flex:1;background:none;border:none;outline:none;
+  font-size:14px;color:#fff;font-family:'Inter',sans-serif;
+  min-width:0;
+}
+.email-input::placeholder{color:rgba(255,255,255,0.35)}
+.email-submit{
+  background:#fff;border:none;border-radius:999px;
+  width:40px;height:40px;display:grid;place-items:center;
+  cursor:pointer;flex-shrink:0;transition:transform 0.15s,background 0.15s;
+}
+.email-submit:hover{background:rgba(255,255,255,0.88);transform:scale(0.96)}
+.email-submit svg{color:#000}
+
+.sub-small{
+  font-size:13px;color:rgba(255,255,255,0.35);
+  line-height:1.65;max-width:380px;margin-bottom:32px;
+}
+
+/* MANIFESTO BTN */
+.manifesto-btn{
+  border-radius:999px;padding:11px 30px;
+  font-size:13.5px;font-weight:500;cursor:pointer;
+  font-family:'Inter',sans-serif;color:#fff;border:none;
+  transition:background 0.2s;
+}
+.manifesto-btn:hover{background:rgba(255,255,255,0.05)}
+
+/* SOCIAL FOOTER */
+.social-footer{
+  position:relative;z-index:10;
+  display:flex;justify-content:center;gap:14px;
+  padding-bottom:36px;
+}
+.social-btn{
+  border-radius:999px;width:52px;height:52px;
+  display:grid;place-items:center;
+  color:rgba(255,255,255,0.7);cursor:pointer;
+  transition:all 0.2s;border:none;font-family:inherit;
+}
+.social-btn:hover{color:#fff;background:rgba(255,255,255,0.05)}
+</style>
+</head>
+<body>
+<div class="root">
+
+  <div class="video-wrap">
+    <video id="bgvid" muted playsinline autoplay>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4" type="video/mp4"/>
+    </video>
+    <div class="overlay"></div>
+  </div>
+
+  <nav>
+    <div class="nav-inner glass">
+      <div class="nav-logo">
+        <div class="logo-mark">C</div>
+        ConsultADD
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Talent Solutions</a></li>
+        <li><a href="#">Public Services</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="btn-text">Sign in</button>
+        <button class="btn-pill glass">Connect now →</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Powering the teams<br/>that <em>move the world</em></h1>
+    <p class="sub">From Fortune 1000 staffing firms to federal agencies — ConsultADD delivers expert tech talent and secure digital solutions that drive mission-critical growth.</p>
+
+    <div class="email-bar glass">
+      <input class="email-input" type="email" placeholder="Enter your work email"/>
+      <button class="email-submit" aria-label="Connect">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <p class="sub-small">Access a pipeline of pre-vetted tech consultants or modernize your agency's digital infrastructure. We handle mission-critical delivery on both sides.</p>
+
+    <button class="manifesto-btn glass">Explore our work →</button>
+  </div>
+
+  <div class="social-footer">
+    <button class="social-btn glass" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </button>
+    <button class="social-btn glass" aria-label="Twitter">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+    </button>
+    <button class="social-btn glass" aria-label="Website">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const v=document.getElementById('bgvid');
+  let raf=null,fadingOut=false;
+
+  function cancelRaf(){if(raf){cancelAnimationFrame(raf);raf=null}}
+
+  function fadeTo(target,duration,cb){
+    cancelRaf();
+    const t0=performance.now();
+    const from=parseFloat(v.style.opacity)||0;
+    function step(now){
+      const p=Math.min((now-t0)/duration,1);
+      v.style.opacity=from+(target-from)*p;
+      if(p<1){raf=requestAnimationFrame(step)}
+      else{v.style.opacity=target;raf=null;if(cb)cb()}
+    }
+    raf=requestAnimationFrame(step);
+  }
+
+  function fadeIn(){fadingOut=false;fadeTo(1,500)}
+  function fadeOut(cb){fadingOut=true;fadeTo(0,500,cb)}
+
+  v.addEventListener('canplay',()=>{if(parseFloat(v.style.opacity||0)<0.1)fadeIn()},{once:true});
+
+  v.addEventListener('timeupdate',()=>{
+    if(!fadingOut&&v.duration&&(v.duration-v.currentTime)<=0.55){
+      fadeOut(()=>{fadingOut=false});
+    }
+  });
+
+  v.addEventListener('ended',()=>{
+    cancelRaf();v.style.opacity=0;fadingOut=false;
+    setTimeout(()=>{v.currentTime=0;v.play().then(fadeIn).catch(()=>{})},100);
+  });
+
+  v.play().catch(()=>{});
+})();
+</script>
+</body>
+</html>
