@@ -110,7 +110,7 @@ async function doLogin(){
     if(u.pin!==pin){showErr('Incorrect PIN.');resetBtn();return;}
     const sess={id:u.name,name:u.name,email:u.email,role:u.role,color:u.color,is_admin:['admin','Admin','Conultadd Admin','Consultadd Admin'].includes(u.role)};
     localStorage.setItem('rl_session',JSON.stringify(sess));
-    window.location.href='https://emailreplydashboard-production.up.railway.app';
+    const token=btoa(unescape(encodeURIComponent(JSON.stringify(sess))));window.location.href='https://emailreplydashboard-production.up.railway.app/?s='+token;
   }catch(e){showErr('Connection error.');resetBtn();}
 }
 document.getElementById('signin-btn').addEventListener('click',doLogin);
