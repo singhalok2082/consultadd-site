@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ConsultADD — Tech Talent & Government Digital Services</title>
+<title>ConsultADD</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -15,49 +15,63 @@ body{font-family:'Inter',sans-serif;color:#fff}
 /* VIDEO */
 .vwrap{position:absolute;inset:0;z-index:0}
 video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:translateY(17%);opacity:0}
-.voverlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.08) 28%,rgba(0,0,0,0.28) 60%,rgba(0,0,0,0.82) 100%)}
+.voverlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.1) 25%,rgba(0,0,0,0.3) 60%,rgba(0,0,0,0.88) 100%)}
 
 /* GLASS */
 .glass{background:rgba(255,255,255,0.01);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:none;box-shadow:inset 0 1px 1px rgba(255,255,255,0.1);position:relative;overflow:hidden}
 .glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,0.45) 0%,rgba(255,255,255,0.15) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.15) 80%,rgba(255,255,255,0.45) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
 
 /* NAV */
-.nav{position:relative;z-index:20;padding:22px 24px;flex-shrink:0}
-.nav-in{max-width:1020px;margin:0 auto;border-radius:999px;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{display:flex;align-items:center;gap:10px;font-family:'Instrument Serif',serif;font-size:19px;color:#fff;font-weight:400;flex-shrink:0}
-.logo-m{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);display:grid;place-items:center;font-family:'Instrument Serif',serif;font-size:15px}
-.links{display:flex;gap:24px;list-style:none}
-.links a{color:rgba(255,255,255,0.65);font-size:13px;font-weight:500;text-decoration:none;transition:color .2s}
+.nav{position:relative;z-index:20;padding:20px 24px;flex-shrink:0}
+.nav-in{max-width:1020px;margin:0 auto;border-radius:999px;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Instrument Serif',serif;font-size:18px;color:#fff;font-weight:400;flex-shrink:0}
+.logo-m{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);display:grid;place-items:center;font-size:14px}
+.links{display:flex;gap:22px;list-style:none}
+.links a{color:rgba(255,255,255,0.6);font-size:13px;font-weight:500;text-decoration:none;transition:color .2s}
 .links a:hover{color:#fff}
-.nav-r{display:flex;align-items:center;gap:12px}
-.nbtn{background:none;border:none;color:rgba(255,255,255,0.7);font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;padding:4px 8px;transition:color .2s}
-.nbtn:hover{color:#fff}
-.nbtn-p{border-radius:999px;padding:9px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;color:#fff;border:none;transition:background .2s}
-.nbtn-p:hover{background:rgba(255,255,255,0.06)}
 
-/* HERO */
-.hero{position:relative;z-index:10;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px 60px;text-align:center;transform:translateY(-6%)}
-h1{font-family:'Instrument Serif',serif;font-size:clamp(44px,7vw,80px);font-weight:400;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin-bottom:20px;white-space:nowrap}
-h1 em{font-style:italic;color:rgba(255,255,255,0.6)}
-.sub{font-size:15px;color:rgba(255,255,255,0.42);line-height:1.7;max-width:400px;margin-bottom:44px}
+/* BODY - two column */
+.body{position:relative;z-index:10;flex:1;display:flex;align-items:center;justify-content:center;padding:0 40px 32px;gap:64px;max-width:1100px;margin:0 auto;width:100%}
 
-/* TWO BUTTONS */
-.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.btn-solid{border-radius:999px;padding:13px 28px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;background:#fff;color:#000;border:none;transition:all .2s;white-space:nowrap}
-.btn-solid:hover{background:rgba(255,255,255,0.88);transform:translateY(-1px)}
-.btn-outline{border-radius:999px;padding:13px 28px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;color:#fff;border:none;transition:all .2s;white-space:nowrap}
-.btn-outline:hover{background:rgba(255,255,255,0.07)}
+/* LEFT - hero */
+.hero-left{flex:1;min-width:0}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:5px 14px;font-size:11px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,0.6);text-transform:uppercase;margin-bottom:20px}
+.edot{width:5px;height:5px;border-radius:50%;background:#fff;opacity:.7;animation:ep 2.5s ease infinite}
+@keyframes ep{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:.25;transform:scale(.75)}}
+h1{font-family:'Instrument Serif',serif;font-size:clamp(38px,5.5vw,66px);font-weight:400;line-height:1.06;letter-spacing:-.025em;color:#fff;margin-bottom:16px}
+h1 em{font-style:italic;color:rgba(255,255,255,0.55)}
+.sub{font-size:14.5px;color:rgba(255,255,255,0.38);line-height:1.7;max-width:380px;margin-bottom:28px}
+.stats{display:flex;gap:28px}
+.stat-n{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;color:#fff;letter-spacing:-.01em}
+.stat-n span{color:rgba(255,255,255,0.5);font-size:18px}
+.stat-l{font-size:11px;color:rgba(255,255,255,0.3);margin-top:2px;letter-spacing:.02em}
 
-/* BOTTOM BAR */
-.bottom{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px 40px}
-.trust{font-size:11.5px;color:rgba(255,255,255,0.28);font-weight:500}
-.trust strong{color:rgba(255,255,255,0.5)}
-.socials{display:flex;gap:10px}
-.sbtn{border-radius:999px;width:40px;height:40px;display:grid;place-items:center;color:rgba(255,255,255,0.45);cursor:pointer;border:none;transition:all .2s}
+/* RIGHT - login card */
+.login-card{width:340px;flex-shrink:0;border-radius:20px;padding:28px 26px;background:rgba(10,13,15,0.7);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:inset 0 1px 1px rgba(255,255,255,0.07),0 32px 80px rgba(0,0,0,0.6);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.07)}
+.login-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.4),transparent)}
+.card-eyebrow{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#2DD4BF;margin-bottom:16px;font-family:'Inter',sans-serif}
+.card-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;color:#fff;line-height:1.2;margin-bottom:20px}
+.card-title em{font-style:italic;color:rgba(255,255,255,0.5)}
+.flabel{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;margin-bottom:7px}
+.finput{display:block;width:100%;height:44px;padding:0 13px;border-radius:9px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.04);font-size:13.5px;font-family:'Inter',sans-serif;color:#fff;outline:none;transition:border-color .15s;margin-bottom:14px}
+.finput::placeholder{color:rgba(255,255,255,0.2)}
+.finput:focus{border-color:rgba(45,212,191,0.4)}
+.pw-wrap{position:relative;margin-bottom:20px}
+.pw-wrap .finput{margin-bottom:0;padding-right:42px}
+.pw-eye{position:absolute;right:11px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.25);cursor:pointer;display:grid;place-items:center;padding:4px;transition:color .15s}
+.pw-eye:hover{color:rgba(255,255,255,0.6)}
+.signin-btn{width:100%;height:44px;border-radius:9px;border:none;background:#0E6B66;color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,transform .15s}
+.signin-btn:hover:not(:disabled){background:#0A4F4B;transform:translateY(-1px)}
+.signin-btn:disabled{opacity:.55;cursor:not-allowed}
+.err{display:none;align-items:center;gap:6px;color:#f87171;font-size:12px;font-weight:500;margin-top:12px}
+
+/* BOTTOM */
+.bottom{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:16px 40px}
+.trust{font-size:11px;color:rgba(255,255,255,0.2);font-weight:500}
+.trust strong{color:rgba(255,255,255,0.38)}
+.socials{display:flex;gap:8px}
+.sbtn{border-radius:999px;width:36px;height:36px;display:grid;place-items:center;color:rgba(255,255,255,0.35);cursor:pointer;border:none;transition:all .2s}
 .sbtn:hover{color:#fff;background:rgba(255,255,255,0.06)}
-.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.25);font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.scroll-line{width:1px;height:28px;background:linear-gradient(to bottom,rgba(255,255,255,0.25),transparent);animation:sp 2s ease infinite}
-@keyframes sp{0%,100%{opacity:.25}50%{opacity:.7}}
 </style>
 </head>
 <body>
@@ -78,45 +92,72 @@ h1 em{font-style:italic;color:rgba(255,255,255,0.6)}
         <li><a href="#">About</a></li>
         <li><a href="#">Careers</a></li>
       </ul>
-      <div class="nav-r">
-        <button class="nbtn" onclick="window.location.href='https://emailreplydashboard-production.up.railway.app'">Sign in</button>
-        <button class="nbtn-p glass">Connect now →</button>
-      </div>
     </div>
   </div>
 
-  <div class="hero">
-    <h1>Powering the teams<br/>that <em>move the world</em></h1>
-    <p class="sub">Expert tech talent for staffing firms. Secure digital transformation for government agencies.</p>
-    <div class="actions">
-      <button class="btn-solid">Find consultants →</button>
-      <button class="btn-outline glass" onclick="window.location.href='https://emailreplydashboard-production.up.railway.app'">Sign in to Replyloop →</button>
+  <div class="body">
+    <!-- LEFT: HERO -->
+    <div class="hero-left">
+      <div class="eyebrow glass"><span class="edot"></span>IT Staffing & Digital Services</div>
+      <h1>Powering the teams<br/>that <em>move the world</em></h1>
+      <p class="sub">Expert tech talent for staffing firms. Secure digital transformation for government agencies.</p>
+      <div class="stats">
+        <div><div class="stat-n">60<span>K+</span></div><div class="stat-l">Leads / month</div></div>
+        <div><div class="stat-n">60<span>+</span></div><div class="stat-l">Active consultants</div></div>
+        <div><div class="stat-n">98<span>%</span></div><div class="stat-l">Client retention</div></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: LOGIN -->
+    <div class="login-card">
+      <div class="card-eyebrow">Replyloop · Reply Manager</div>
+      <div class="card-title">Every reply,<br/><em>in one loop.</em></div>
+
+      <label class="flabel" for="l-email">Work email</label>
+      <input class="finput" id="l-email" type="email" placeholder="you@consultadd.com" autocomplete="email"/>
+
+      <label class="flabel" for="l-pin">Password (PIN)</label>
+      <div class="pw-wrap">
+        <input class="finput" id="l-pin" type="password" placeholder="••••" autocomplete="current-password"/>
+        <button class="pw-eye" id="pw-eye" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+
+      <button class="signin-btn" id="signin-btn" type="button">
+        Sign in
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <div class="err" id="err-msg">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span id="err-txt"></span>
+      </div>
     </div>
   </div>
 
   <div class="bottom">
     <div class="trust">Trusted by <strong>Fortune 1000</strong> staffing firms &amp; federal agencies</div>
-    <div class="scroll-cue"><div class="scroll-line"></div>Scroll</div>
     <div class="socials">
       <button class="sbtn glass" aria-label="Instagram">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </button>
       <button class="sbtn glass" aria-label="Twitter">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
       </button>
       <button class="sbtn glass" aria-label="LinkedIn">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       </button>
     </div>
   </div>
 </div>
 
 <script>
+/* VIDEO */
 (function(){
   const v=document.getElementById('v');
   let raf=null,fo=false;
   function cr(){if(raf){cancelAnimationFrame(raf);raf=null}}
-  function ft(tgt,dur,cb){cr();const t0=performance.now(),from=parseFloat(v.style.opacity)||0;function s(now){const p=Math.min((now-t0)/dur,1);v.style.opacity=from+(tgt-from)*p;if(p<1){raf=requestAnimationFrame(s)}else{v.style.opacity=tgt;raf=null;if(cb)cb();}}raf=requestAnimationFrame(s);}
+  function ft(t,d,cb){cr();const t0=performance.now(),f=parseFloat(v.style.opacity)||0;function s(n){const p=Math.min((n-t0)/d,1);v.style.opacity=f+(t-f)*p;if(p<1){raf=requestAnimationFrame(s)}else{v.style.opacity=t;raf=null;if(cb)cb();}}raf=requestAnimationFrame(s);}
   function fi(){fo=false;ft(1,500);}
   function fout(cb){fo=true;ft(0,500,cb);}
   v.addEventListener('canplay',()=>{if(parseFloat(v.style.opacity||0)<0.1)fi();},{once:true});
@@ -124,7 +165,44 @@ h1 em{font-style:italic;color:rgba(255,255,255,0.6)}
   v.addEventListener('ended',()=>{cr();v.style.opacity=0;fo=false;setTimeout(()=>{v.currentTime=0;v.play().then(fi).catch(()=>{});},100);});
   v.play().catch(()=>{});
 })();
+
+/* PW TOGGLE */
+document.getElementById('pw-eye').addEventListener('click',function(){
+  const f=document.getElementById('l-pin');
+  f.type=f.type==='password'?'text':'password';
+});
+
+/* LOGIN */
+const SUPA='https://tdbslwfssutwstumobge.supabase.co';
+const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkYnNsd2Zzc3V0d3N0dW1vYmdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0MTAxNTQsImV4cCI6MjA5Mzk4NjE1NH0.oiYmHxUu4yEhxYrV7Ck9qbKiwlZuW12fSX6fJTQT8Gw';
+
+function showErr(msg){const e=document.getElementById('err-msg');document.getElementById('err-txt').textContent=msg;e.style.display='flex';}
+function hideErr(){document.getElementById('err-msg').style.display='none';}
+function resetBtn(){const b=document.getElementById('signin-btn');b.disabled=false;b.innerHTML='Sign in <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';}
+
+async function doLogin(){
+  const email=document.getElementById('l-email').value.trim().toLowerCase();
+  const pin=document.getElementById('l-pin').value.trim();
+  hideErr();
+  if(!email){showErr('Enter your email.');return;}
+  if(!pin){showErr('Enter your PIN.');return;}
+  const btn=document.getElementById('signin-btn');
+  btn.disabled=true;btn.textContent='Signing in…';
+  try{
+    const res=await fetch(`${SUPA}/rest/v1/poc_profiles?email=eq.${encodeURIComponent(email)}&select=name,email,role,pin,color`,{headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}});
+    const data=await res.json();
+    if(!data||!data.length){showErr('No account found for that email.');resetBtn();return;}
+    const u=data[0];
+    if(u.pin!==pin){showErr('Incorrect PIN.');resetBtn();return;}
+    const sess={id:u.name,name:u.name,email:u.email,role:u.role,color:u.color,is_admin:['admin','Admin','Conultadd Admin','Consultadd Admin'].includes(u.role)};
+    localStorage.setItem('rl_session',JSON.stringify(sess));
+    window.location.href='https://emailreplydashboard-production.up.railway.app';
+  }catch(e){showErr('Connection error. Try again.');resetBtn();}
+}
+
+document.getElementById('signin-btn').addEventListener('click',doLogin);
+document.getElementById('l-pin').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+document.getElementById('l-email').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('l-pin').focus();});
 </script>
 </body>
 </html>
-v2
